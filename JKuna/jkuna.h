@@ -14,10 +14,13 @@ class JKuna : public QObject
 	Q_OBJECT
 public:
 	explicit JKuna(QObject *parent = nullptr);
-	void getTicker(QString symbol);
+    void getTicker(QString _symbol);
+    void getDepth(QString _symbol);
 	void getMembers(QString _apiKey, QString _secretKey);
-	void getOrders(QString _apiKey, QString _secretKey, QString _market);
-
+    void getOrders(QString _apiKey, QString _secretKey, QString _market);
+    void openSellOrders(QString _apiKey, QString _secretKey, QString _market, double _volume, double _price);
+    void openBuyOrders(QString _apiKey, QString _secretKey, QString _market, double _volume, double _price);
+    void deleteOrder(QString _apiKey, QString _secretKey,QString _id);
 
 private:
 	void gotReply_(QNetworkReply* reply);

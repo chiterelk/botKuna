@@ -15,8 +15,8 @@ class MainWindow : public QMainWindow
 public:
 	explicit MainWindow(QWidget *parent = 0);
 	~MainWindow();
-	QString apiKey = "";
-	QString secretKey = "";
+    QString apiKey = "";
+    QString secretKey = "";
 
 private:
 	Ui::MainWindow *ui;
