@@ -6,14 +6,14 @@ class JTicker
 {
 public:
 	JTicker(double _buy, double _sell, double _low,	double _high, double _last, double _vol, double _amoun);
-	double getBuy(){	return buy_;	}; //Bid
-	double getSell(){	return sell_;	}; //Ask
-	double getLow(){	return low_;	};
-	double getHigh(){	return high_;	};
-	double getLast(){	return last_;	};
-	double getVol(){	return vol_;	};
-	double getAmoun(){	return amoun_;	};
-	double getSpread(){	return spread_;	};
+	double getBuy()const{	return buy_;	}; //Bid
+	double getSell()const{	return sell_;	}; //Ask
+	double getLow()const{	return low_;	};
+	double getHigh()const{	return high_;	};
+	double getLast()const{	return last_;	};
+	double getVol()const{	return vol_;	};
+	double getAmoun()const{	return amoun_;	};
+	double getSpread()const{	return spread_;	};
 private:
 	double buy_ = 0.0; //цена биткоина на покупку,
 	double sell_ = 0.0; //цена биткоина на продажу,

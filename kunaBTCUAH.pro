@@ -28,13 +28,20 @@ SOURCES += \
         mainwindow.cpp \
     JKuna/jkuna.cpp \
     JKuna/jticker.cpp \
-    JKuna/jorderofdepth.cpp
+    JKuna/jorderofdepth.cpp \
+    JKuna/jbalance.cpp \
+    JKuna/jactiveorders.cpp \
+    loginwondow.cpp
 
 HEADERS += \
         mainwindow.h \
     JKuna/jkuna.h \
     JKuna/jticker.h \
-    JKuna/jorderofdepth.h
+    JKuna/jorderofdepth.h \
+    JKuna/jbalance.h \
+    JKuna/jactiveorders.h \
+    loginwondow.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    loginwondow.ui

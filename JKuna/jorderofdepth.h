@@ -6,15 +6,18 @@
 class JOrderOfDepth
 {
 public:
-    JOrderOfDepth(double _price, double _volume);
-    double getPrice(void);
-    double getVolume(void);
-    QDateTime getTime(void);
-    void setTime(QString _date);
+	JOrderOfDepth(double _price, double _volume);
+	JOrderOfDepth(double _price, double _volume, QString _date);
+	double getPrice(void)const;
+	double getVolume(void)const;
+	QDateTime getTime(void)const;
+	QString getTimeString()const;
+	QString getTimeString(QString format)const;
+	void setTime(QString _date);
 private:
-    double price_ = 0.0;
-    double volume_ = 0.0;
-    QDateTime createdAt_;
+	double price_ = 0.0;
+	double volume_ = 0.0;
+	QDateTime createdAt_;
 
 };
 
