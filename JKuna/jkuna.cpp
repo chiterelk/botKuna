@@ -8,6 +8,7 @@
 #include <QDateTime>
 #include <QMessageAuthenticationCode>
 #include <QCryptographicHash>
+#include "JKuna/jorderofdepth.h"
 
 
 JKuna::JKuna(QObject *parent) : QObject(parent)
@@ -24,6 +25,11 @@ void JKuna::getTicker(QString _symbol)
 void JKuna::getDepth(QString _symbol)
 {
     NAM->get(QNetworkRequest(QUrl("https://kuna.io/api/v2/depth?market=" + _symbol)));
+}
+
+void JKuna::getTrades(QString _symbol)
+{
+    NAM->get(QNetworkRequest(QUrl("https://kuna.io/api/v2/trades?market=" + _symbol)));
 }
 
 void JKuna::getMembers(QString _apiKey, QString _secretKey)
@@ -150,10 +156,50 @@ void JKuna::gotReply_(QNetworkReply *reply)
 											 objTicker.value("amoun").toString().toDouble());
 			emit gotTicker(ticker);//сигнал о получении тикеров
 		}
-		if(url.indexOf("/api/v2/members/me")>=0)
+        if(url.indexOf("/api/v2/depth")>=0)
+        {
+            QJsonDocument doc = QJsonDocument::fromJson(document);
+            QJsonObject obj = doc.object();
+            QJsonArray asks = obj.value("asks").toArray();
+            QList <JOrderOfDepth> ask;
+            if(asks.count()>0)
+            {
+                for(int i = 0; i<asks.count();i++)
+                {
+                    ask << JOrderOfDepth(asks.at(i).toArray().at(0).toString().toDouble(),asks.at(i).toArray().at(1).toString().toDouble());
+                }
+            }
+            QJsonArray bids = obj.value("bids").toArray();
+            QList <JOrderOfDepth> bid;
+            if(bids.count()>0)
+            {
+                for(int i = 0; i<bids.count();i++)
+                {
+                    bid << JOrderOfDepth(bids.at(i).toArray().at(0).toString().toDouble(),bids.at(i).toArray().at(1).toString().toDouble());
+                }
+            }
+            QList <QList<JOrderOfDepth>> depth;
+            depth << ask;
+            depth << bid;
+            emit gotDepth(depth);
+            ask.clear();
+            bid.clear();
+            depth.clear();
+        }
+        if(url.indexOf("/api/v2/trades?market=")>=0)
 		{
-			//QJsonDocument doc = QJsonDocument::fromJson(document);
-			//QJsonObject obj = doc.object();
+            QJsonDocument doc = QJsonDocument::fromJson(document);
+            QJsonArray arr = doc.array();
+            QList <JOrderOfDepth> trades;
+            if(arr.count()>0)
+            {
+                for(int i = 0; i<arr.count();i++)
+                {
+                    trades << JOrderOfDepth(arr.at(i).toObject().value("price").toString().toDouble(),arr.at(i).toObject().value("volume").toString().toDouble());
+                    trades.last().setTime(arr.at(i).toObject().value("created_at").toString());
+                }
+            }
+            qDebug()<<trades.count();
 		}
 	}else{
 		qDebug()<<reply->errorString();

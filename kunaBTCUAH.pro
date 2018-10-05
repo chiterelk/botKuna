@@ -27,12 +27,14 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     JKuna/jkuna.cpp \
-    JKuna/jticker.cpp
+    JKuna/jticker.cpp \
+    JKuna/jorderofdepth.cpp
 
 HEADERS += \
         mainwindow.h \
     JKuna/jkuna.h \
-    JKuna/jticker.h
+    JKuna/jticker.h \
+    JKuna/jorderofdepth.h
 
 FORMS += \
         mainwindow.ui

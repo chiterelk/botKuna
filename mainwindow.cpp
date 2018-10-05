@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),
@@ -12,10 +13,15 @@ MainWindow::MainWindow(QWidget *parent) :
     //Kuna->getMembers(apiKey,secretKey);
     //Kuna->openBuyOrders(apiKey,secretKey,"xemuah",20.0841,2.97);
     //Kuna->deleteOrder(apiKey,secretKey,"24747248");
-    //Kuna->getDepth("xemuah");
+    Kuna->getTrades("xemuah");
 }
 
 MainWindow::~MainWindow()
 {
-	delete ui;
+    delete ui;
+}
+
+void MainWindow::gotDepth(QList<QList<JOrderOfDepth> > _depth)
+{
+
 }
