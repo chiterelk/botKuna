@@ -215,6 +215,7 @@ void JKuna::gotReply_(QNetworkReply *reply)
 			}
 			emit gotMembers(wallet);
 			wallet.clear();
+
 		}
 		if(url.indexOf("/api/v2/orders")>=0)
 		{
@@ -277,7 +278,41 @@ void JKuna::gotReply_(QNetworkReply *reply)
 			emit orderIsDeleted(openedOrder);
 		}
 	}else{
-		qDebug()<<reply->errorString();
-		qDebug()<<reply->error();
+		qDebug()<<"Error:";
+		if(url.indexOf("/api/v2/tickers")>=0)
+		{
+
+		}
+
+		if(url.indexOf("/api/v2/depth")>=0)
+		{
+
+		}
+
+		if(url.indexOf("/api/v2/trades?market=")>=0)
+		{
+
+		}
+
+		if(url.indexOf("/api/v2/members/me")>=0)
+		{
+			qDebug()<<"Error got members!";
+			emit errorGetMembers();
+		}
+
+		if(url.indexOf("/api/v2/orders")>=0)
+		{
+			if(url.indexOf("&market=")>=0)//Получены открытые ордера
+			{
+
+			}else{//Ордер выставлен
+
+			}
+		}
+
+		if(url.indexOf("/api/v2/order/delete")>=0)
+		{
+
+		}
 	}
 }

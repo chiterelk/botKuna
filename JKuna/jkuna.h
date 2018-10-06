@@ -37,6 +37,14 @@ signals:
 	void gotOrders(QList <JActiveOrders> _activeOrders);
 	void orderIsOpened(JActiveOrders _openedOrder);
 	void orderIsDeleted(JActiveOrders _deletedOrder);
+
+//	void gotTicker(JTicker _ticker);
+//	void gotDepth(QList <QList<JOrderOfDepth>> _depth);
+//	void gotTrades(QList <JOrderOfDepth> _trades);
+	void errorGetMembers();
+//	void gotOrders(QList <JActiveOrders> _activeOrders);
+//	void orderIsOpened(JActiveOrders _openedOrder);
+//	void orderIsDeleted(JActiveOrders _deletedOrder);
 };
 
 #endif // JKUNA_H
