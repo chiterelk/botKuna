@@ -23,12 +23,19 @@ private slots:
 	void gotMembers(QList <JBalance> _wallet);
 	void errorGetMembers();
 
+    void on_pushButton_2_clicked();
+
 private:
 	Ui::LogInWondow *ui;
 	QTimer * timer;
 	JKuna * logInKuna;
 	int startInterval = 1000000000/5000;
 	int interval = 0;
+    int task = 0;
+    QString apiKey_;
+    QString secretKey_;
+signals:
+    void loginedIn(QString _apiKey, QString _secretKey);
 };
 
 

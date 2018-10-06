@@ -31,7 +31,8 @@ SOURCES += \
     JKuna/jorderofdepth.cpp \
     JKuna/jbalance.cpp \
     JKuna/jactiveorders.cpp \
-    loginwondow.cpp
+    loginwondow.cpp \
+    jmodelwallet.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -40,7 +41,8 @@ HEADERS += \
     JKuna/jorderofdepth.h \
     JKuna/jbalance.h \
     JKuna/jactiveorders.h \
-    loginwondow.h
+    loginwondow.h \
+    jmodelwallet.h
 
 FORMS += \
         mainwindow.ui \
